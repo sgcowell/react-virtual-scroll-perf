@@ -1,0 +1,374 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/Scott/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 851,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/App.tsx",
+			"settings":
+			{
+				"buffer_size": 499,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "node_modules/@types/react/index.d.ts",
+			"settings":
+			{
+				"buffer_size": 158227,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Mater",
+				"Material Theme: Activate theme"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install pac",
+				"Package Control: Install Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 496.0
+	},
+	"console":
+	{
+		"height": 186.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/src/react-virtual-scroll-perf",
+		"/C/src/react-virtual-scroll-perf/src"
+	],
+	"file_history":
+	[
+		"/C/src/react-virtual-scroll-perf/src/App.tsx",
+		"/C/Users/Scott/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/src/projects/GlFileResource.PropertyPageSchema.xml",
+		"/C/src/projects/Cpp.Common.GL.targets",
+		"/C/src/projects/init.ps1",
+		"/C/src/projects/GL/Vulkan/MeshSimplification/MeshSimplification.vcxproj",
+		"/C/src/projects/Cpp.Common.GL.props",
+		"/C/src/projects/assets/mesh/bunny.obj",
+		"/C/src/projects/GL/OpenGLTest/OpenGLTest.vcxproj",
+		"/C/src/projects/GL/VulkanTriangle/VulkanTriangle.vcxproj",
+		"/C/src/projects/GL/Terrain/Terrain.vcxproj",
+		"/C/src/projects/GL/GLLib/GLLib.vcxproj",
+		"/C/src/projects/GL/RigelApp1/RigelApp1.vcxproj",
+		"/C/src/projects/GL/RigelAppTemplate/RigelAppTemplate.vcxproj",
+		"/C/src/projects/GL/VkLibProto/VkLibProto.vcxproj",
+		"/C/src/projects/sdk/VulkanSDK/1.0.37.0/Bin/vkjson_info.exe",
+		"/C/src/projects/GL/GL.sublime-project",
+		"/C/src/projects/.gitignore",
+		"/C/src/projects/GL/TestProj/TestProj.vcxproj",
+		"/C/src/projects/GL/TestProj3/TestProj3.vcxproj",
+		"/C/src/projects/GL/TestProj2/TestProj2.vcxproj",
+		"/C/src/projects/GL/OpenGLProjectTemplate/OpenGLProjectTemplate.vcxproj",
+		"/C/src/projects/GL/OpenGLProjectTemplate/MainWindow.cpp",
+		"/C/src/projects/GL/OpenGLProjectTemplate/main.cpp",
+		"/C/src/projects/GL/OpenGLProjectTemplate/MainWindow.h",
+		"/C/src/projects/GL/GLLib/Noise/Perlin.cpp",
+		"/C/src/projects/GL/GLLib/Noise/Simplex.cpp",
+		"/C/src/projects/GL/GLLib/Noise/SimplexDerivative.cpp",
+		"/C/src/projects/GL/GLLib/Noise/SimplexFlow.cpp",
+		"/C/src/projects/GL/OpenGLProjectTemplate/stdincl.h",
+		"/C/src/misc/Cpp.Common.GL.props",
+		"/C/src/misc/OpenGLTest/OpenGLTest.vcxproj",
+		"/C/src/init.ps1",
+		"/C/src/misc/.gitignore",
+		"/C/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/Tools/VsMSBuildCmd.bat",
+		"/C/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/Tools/VsDevCmd.bat",
+		"/C/src/remote/glfw/README.md",
+		"/C/src/misc/sdk/boost_1_62_0/bootstrap.bat",
+		"/C/Users/Scott/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1",
+		"/C/src/misc/sdk/boost_1_62_0/boost/thread/once.hpp",
+		"/C/src/misc/sdk/boost_1_62_0/boost/thread/mutex.hpp",
+		"/C/src/misc/sdk/boost_1_62_0/boost/thread/win32/mutex.hpp",
+		"/C/src/misc/sdk/boost_1_62_0/INSTALL",
+		"/C/src/.gitignore",
+		"/C/Users/Scott/Documents/WindowsPowerShell/Modules/posh-git/profile.example.ps1"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Scott/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								844,
+								844
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/zzz A File Icon zzz/aliases/JSON (Sublime).sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/App.tsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 499,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScriptReact.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "node_modules/@types/react/index.d.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 158227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3805,
+								3805
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3488.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "react-virtual-scroll-perf.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\src\\projects\\GL\\GL.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"_STDINCL_H_"
+			],
+			[
+				"Instance",
+				"Instance"
+			]
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 418.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
