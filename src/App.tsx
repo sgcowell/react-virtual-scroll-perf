@@ -1,21 +1,32 @@
 import * as React from 'react';
 import './App.css';
+import { PanelContainer } from './components/PanelContainer';
+import { ComponentStatsPanel, ComponentStats, ComponentStatsMap } from './components/ComponentStatsPanel';
 
-const logo = require('./logo.svg');
+type AppState = {
+  readonly stats: ComponentStatsMap;
+};
 
-class App extends React.Component {
+class App extends React.Component<{}, AppState> {
+
+  private boundUpdateStats = this.updateStats.bind(this);
+
+  constructor() {
+    super();
+    this.state = { stats: {} };
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <PanelContainer updateStats={this.boundUpdateStats} />
+        <ComponentStatsPanel stats={this.state.stats} />
       </div>
     );
+  }
+
+  private updateStats(name: string, stats: ComponentStats) {
+    this.setState({ stats: { ...this.state.stats, [name]: stats }});
   }
 }
 
