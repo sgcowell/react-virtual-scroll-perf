@@ -4,9 +4,10 @@ import { ComponentStats } from './ComponentStatsPanel';
 import { Panel } from './Panel';
 
 export type PanelContainerProps = {
-  readonly numPanels: number;
-  readonly numItemsPerPanel: number;
-  readonly updateStats: (name: string, stats: ComponentStats) => void;
+  numPanels: number;
+  numItemsPerPanel: number;
+  updateStats: (name: string, stats: ComponentStats) => void;
+  recordTiming: (operation: string, elapsed: number) => void;
 };
 
 export class PanelContainer extends React.PureComponent<PanelContainerProps> {
@@ -68,6 +69,8 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps> {
     let marks = performance.getEntriesByName(onScrollMark, 'mark');
     for (let mark of marks) {
       performance.measure('PanelContainer:onScroll', mark.name);
+      const elapsed = performance.now() - mark.startTime;
+      this.props.recordTiming('PanelContainer:Scroll', elapsed);
     }
     performance.clearMarks(onScrollMark);
     performance.clearMeasures('PanelContainer:onScroll');
@@ -76,6 +79,8 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps> {
     marks = performance.getEntriesByName(onMountMark, 'mark');
     for (let mark of marks) {
       performance.measure('PanelContainer:mount', mark.name);
+      const elapsed = performance.now() - mark.startTime;
+      this.props.recordTiming('PanelContainer:Init', elapsed);
     }
     performance.clearMarks(onMountMark);
     performance.clearMeasures('PanelContainer:mount');

@@ -1,9 +1,10 @@
-.ComponentStatsPanel {
+.OperationTimingsPanel {
   margin: 20px;
   background-color: #E1A353;
   font-size: 10pt;
 }
 
-.Stat {
+.Timing {
   text-align: right;
+  min-width: 60px;
 }
