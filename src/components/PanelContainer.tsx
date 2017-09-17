@@ -11,7 +11,17 @@ export type PanelContainerProps = {
 
 export class PanelContainer extends React.PureComponent<PanelContainerProps> {
 
+  private static nextComponentId: number = 0;
+  private componentId: number = PanelContainer.nextComponentId++;
   private stats: ComponentStats = { mountCount: 0, updateCount: 0, renderCount: 0 };
+  private element: HTMLDivElement | null = null;
+  private boundOnPaintComplete = this.onPaintComplete.bind(this);
+  private boundOnScroll = this.onScroll.bind(this);
+
+  componentWillMount() {
+    performance.mark(this.getMarkName('mount', 'Start'));
+    setTimeout(this.boundOnPaintComplete, 0);
+  }
 
   componentDidMount() {
     this.stats.mountCount++;
@@ -26,7 +36,10 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps> {
   render(): JSX.Element {
     this.stats.renderCount++;
     return (
-      <div className="PanelContainer">
+      <div
+        ref={(elem) => this.element = elem}
+        className="PanelContainer"
+        onScroll={this.boundOnScroll}>
         {this.renderPanels()}
       </div>
       );
@@ -44,5 +57,35 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps> {
         />);
     }
     return panels;
+  }
+
+  private getMarkName(eventType: string, eventName: string): string {
+    return `PanelContainer:${this.componentId}:${eventType}:${eventName}}`;
+  }
+
+  private onPaintComplete() {
+    const onScrollMark = this.getMarkName('onScroll', 'Start');
+    let marks = performance.getEntriesByName(onScrollMark, 'mark');
+    for (let mark of marks) {
+      performance.measure('PanelContainer:onScroll', mark.name);
+    }
+    performance.clearMarks(onScrollMark);
+    performance.clearMeasures('PanelContainer:onScroll');
+
+    const onMountMark = this.getMarkName('mount', 'Start');
+    marks = performance.getEntriesByName(onMountMark, 'mark');
+    for (let mark of marks) {
+      performance.measure('PanelContainer:mount', mark.name);
+    }
+    performance.clearMarks(onMountMark);
+    performance.clearMeasures('PanelContainer:mount');
+  }
+
+  private onScroll() {
+    if (this && this.element) {
+      console.log(`PanelContainer.scrollLeft === ${this.element.scrollLeft}`);
+    }
+    performance.mark(this.getMarkName('onScroll', 'Start'));
+    setTimeout(this.boundOnPaintComplete, 0);
   }
 }
