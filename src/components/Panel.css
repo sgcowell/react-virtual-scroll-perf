@@ -1,0 +1,14 @@
+.Panel {
+  width: 90px;
+  min-width: 90px;
+  margin: 2px 1px 2px 1px;
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  padding: 4px;
+}
+
+.PanelHeader {
+  margin: 4px;
+  font-size: 10pt;
+}

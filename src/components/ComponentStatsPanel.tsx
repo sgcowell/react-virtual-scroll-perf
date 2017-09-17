@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './ComponentStatsPanel.css';
 
 export type ComponentStats = {
   mountCount: number;
@@ -40,9 +41,9 @@ export class ComponentStatsPanel extends React.PureComponent<ComponentStatsPanel
       rows.push(
         <tr key={name}>
           <td>{name}</td>
-          <td>{stats.mountCount}</td>
-          <td>{stats.updateCount}</td>
-          <td>{stats.renderCount}</td>
+          <td className="Stat">{stats.mountCount}</td>
+          <td className="Stat">{stats.updateCount}</td>
+          <td className="Stat">{stats.renderCount}</td>
         </tr>
         );
     }
