@@ -6,3 +6,17 @@
   display: flex;
   flex-direction: row;
 }
+
+.ScenarioSelectorContainer {
+  text-align: left;
+  padding: 20px;
+  font-size: 16pt;
+}
+
+.ScenarioSelectorContainer a {
+  margin: 0px 20px 0px 0px;
+}
+
+.ScenarioSelectorContainer span {
+  margin: 0px 20px 0px 0px;
+}

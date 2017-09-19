@@ -13,6 +13,10 @@ export class Panel extends React.PureComponent<PanelProps> {
 
   private static stats: ComponentStats = { mountCount: 0, updateCount: 0, renderCount: 0 };
 
+  static resetStats() {
+    Panel.stats = { mountCount: 0, updateCount: 0, renderCount: 0 };
+  }
+
   componentDidMount() {
     Panel.stats.mountCount++;
     this.props.updateStats('Panel', Panel.stats);

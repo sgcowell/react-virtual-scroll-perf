@@ -11,6 +11,10 @@ export class PanelItem extends React.PureComponent<PanelItemProps> {
 
   private static stats: ComponentStats = { mountCount: 0, updateCount: 0, renderCount: 0 };
 
+  static resetStats() {
+    PanelItem.stats = { mountCount: 0, updateCount: 0, renderCount: 0 };
+  }
+
   componentDidMount() {
     PanelItem.stats.mountCount++;
     this.props.updateStats('PanelItem', PanelItem.stats);
