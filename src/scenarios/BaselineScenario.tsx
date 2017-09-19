@@ -16,6 +16,7 @@ export class BaselineScenario extends React.PureComponent<ScenarioProps> {
       <PanelContainer
         numPanels={this.props.numPanels}
         numItemsPerPanel={this.props.numItemsPerPanel}
+        virtual={false}
         updateStats={this.props.updateStats}
         recordTiming={this.props.recordTiming}
       />

@@ -6,6 +6,7 @@ import { Panel } from './Panel';
 export type PanelContainerProps = {
   numPanels: number;
   numItemsPerPanel: number;
+  virtual: boolean;
   updateStats: (name: string, stats: ComponentStats) => void;
   recordTiming: (operation: string, elapsed: number) => void;
 };
@@ -18,6 +19,8 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps> {
   private element: HTMLDivElement | null = null;
   private boundOnPaintComplete = this.onPaintComplete.bind(this);
   private boundOnScroll = this.onScroll.bind(this);
+  private readonly viewWidth = 800;
+  private readonly panelWidth = 90 + 8 + 4 + 2; // width + padding + border + margin
 
   componentWillMount() {
     performance.mark(this.getMarkName('mount', 'Start'));
