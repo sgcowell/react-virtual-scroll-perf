@@ -7,11 +7,16 @@ export type PanelContainerProps = {
   numPanels: number;
   numItemsPerPanel: number;
   virtual: boolean;
+  altKeyAssignment: boolean;
   updateStats: (name: string, stats: ComponentStats) => void;
   recordTiming: (operation: string, elapsed: number) => void;
 };
 
-export class PanelContainer extends React.PureComponent<PanelContainerProps> {
+type PanelContainerState = {
+  visiblePanelIndex: number;
+}
+
+export class PanelContainer extends React.PureComponent<PanelContainerProps, PanelContainerState> {
 
   private static nextComponentId: number = 0;
   private componentId: number = PanelContainer.nextComponentId++;
@@ -21,6 +26,12 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps> {
   private boundOnScroll = this.onScroll.bind(this);
   private readonly viewWidth = 800;
   private readonly panelWidth = 90 + 8 + 4 + 2; // width + padding + border + margin
+  private readonly renderMode = 'svg';
+
+  constructor(props: PanelContainerProps) {
+    super(props);
+    this.state = { visiblePanelIndex: 0 };
+  }
 
   componentWillMount() {
     performance.mark(this.getMarkName('mount', 'Start'));
@@ -44,22 +55,84 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps> {
         ref={(elem) => this.element = elem}
         className="PanelContainer"
         onScroll={this.boundOnScroll}>
-        {this.renderPanels()}
+        <div className="ScrollContentBox" style={{ width: this.props.numPanels * this.panelWidth }}>
+          {this.renderPanels()}
+        </div>
       </div>
       );
   }
 
+  private getFirstVisiblePanelIndex(scrollLeft: number): number {
+    return Math.floor(scrollLeft / this.panelWidth);
+  }
+
+  private getVisiblePanelCount(): number {
+    return Math.ceil(this.viewWidth / this.panelWidth) + 1;
+  }
+
   private renderPanels(): JSX.Element[] {
+    if (this.props.virtual) {
+      return this.renderPanelsVirtual();
+    }
+    return this.renderPanelsBaseline();
+  }
+
+  private renderPanelsBaseline(): JSX.Element[] {
     const panels: JSX.Element[] = [];
     for (let i = 0; i < this.props.numPanels; i++) {
+      const key = i.toString();
       panels.push(
         <Panel
-          key={i.toString()}
+          key={key}
           id={i}
+          panelKey={key}
           numItems={this.props.numItemsPerPanel}
           updateStats={this.props.updateStats}
+          rightMargin={0}
+          renderMode={this.renderMode}
         />);
     }
+    return panels;
+  }
+
+  private renderPanelsVirtual(): JSX.Element[] {
+    const panels: JSX.Element[] = [];
+    const panelCount = this.getVisiblePanelCount();
+    const startIndex = this.state.visiblePanelIndex;
+    const endIndex = Math.min(this.props.numPanels, startIndex + panelCount);
+    const rightMargin = (this.props.numPanels - endIndex) * this.panelWidth;
+
+    if (startIndex > 0) {
+      panels.push(<div key="spacerleft" style={{ width: startIndex * this.panelWidth }} />)
+    }
+
+    for (let i = startIndex; i < endIndex; i++) {
+      const key = (this.props.altKeyAssignment ? i % panelCount : i).toString();
+      if ((rightMargin > 0) && (i === endIndex - 1)) {
+        panels.push(
+          <Panel
+            key={key}
+            id={i}
+            panelKey={key}
+            numItems={this.props.numItemsPerPanel}
+            updateStats={this.props.updateStats}
+            rightMargin={rightMargin}
+            renderMode={this.renderMode}
+          />);
+      } else {
+        panels.push(
+          <Panel
+            key={key}
+            id={i}
+            panelKey={key}
+            numItems={this.props.numItemsPerPanel}
+            updateStats={this.props.updateStats}
+            rightMargin={0}
+            renderMode={this.renderMode}
+          />);
+      }
+    }
+
     return panels;
   }
 
@@ -91,7 +164,7 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps> {
 
   private onScroll() {
     if (this && this.element) {
-      console.log(`PanelContainer.scrollLeft === ${this.element.scrollLeft}`);
+      this.setState({ visiblePanelIndex: this.getFirstVisiblePanelIndex(this.element.scrollLeft) });
     }
     performance.mark(this.getMarkName('onScroll', 'Start'));
     setTimeout(this.boundOnPaintComplete, 0);

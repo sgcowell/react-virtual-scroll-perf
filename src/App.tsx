@@ -1,6 +1,8 @@
 import * as React from 'react';
 import './App.css';
 import { BaselineScenario } from './scenarios/BaselineScenario';
+import { VirtualScrollScenario } from './scenarios/VirtualScrollScenario';
+import { VirtualScrollAltKeyAssignScenario } from './scenarios/VirtualScrollAltKeyAssignScenario';
 import { ComponentStatsPanel, ComponentStats, ComponentStatsMap } from './components/ComponentStatsPanel';
 import { OperationTimingsPanel, OperationTimingMap } from './components/OperationTimingsPanel';
 
@@ -50,12 +52,30 @@ class App extends React.Component<{}, AppState> {
           recordTiming={this.boundRecordTiming}
         />
         );
+    } else if (this.state.scenario === 'virtual') {
+      return (
+        <VirtualScrollScenario
+          numPanels={this.numPanels}
+          numItemsPerPanel={this.numItemsPerPanel}
+          updateStats={this.boundUpdateStats}
+          recordTiming={this.boundRecordTiming}
+        />
+        );
+    } else if (this.state.scenario === 'virtual-alt-key-assign') {
+      return (
+        <VirtualScrollAltKeyAssignScenario
+          numPanels={this.numPanels}
+          numItemsPerPanel={this.numItemsPerPanel}
+          updateStats={this.boundUpdateStats}
+          recordTiming={this.boundRecordTiming}
+        />
+        );
     }
     return null;
   }
 
   private renderScenarioLinks(): JSX.Element[] {
-    const scenarios: string[] = [ 'reset', 'baseline' ];
+    const scenarios: string[] = [ 'reset', 'baseline', 'virtual', 'virtual-alt-key-assign' ];
     const links: JSX.Element[] = [];
     for (let s of scenarios) {
       if (this.state.scenario === s) {
@@ -72,6 +92,7 @@ class App extends React.Component<{}, AppState> {
     this.statsMap = {};
     this.timingMap = {};
     BaselineScenario.resetStats();
+    VirtualScrollScenario.resetStats();
   }
 
   private onScenarioSelected(scenario: string) {

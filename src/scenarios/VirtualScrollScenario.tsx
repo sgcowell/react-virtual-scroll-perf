@@ -4,7 +4,7 @@ import { Panel } from '../components/Panel';
 import { PanelItem } from '../components/PanelItem';
 import { ScenarioProps } from './ScenarioProps';
 
-export class BaselineScenario extends React.PureComponent<ScenarioProps> {
+export class VirtualScrollScenario extends React.PureComponent<ScenarioProps> {
 
   static resetStats() {
     Panel.resetStats();
@@ -16,7 +16,7 @@ export class BaselineScenario extends React.PureComponent<ScenarioProps> {
       <PanelContainer
         numPanels={this.props.numPanels}
         numItemsPerPanel={this.props.numItemsPerPanel}
-        virtual={false}
+        virtual={true}
         altKeyAssignment={false}
         updateStats={this.props.updateStats}
         recordTiming={this.props.recordTiming}

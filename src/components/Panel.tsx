@@ -4,9 +4,12 @@ import { ComponentStats } from './ComponentStatsPanel';
 import { PanelItem } from './PanelItem';
 
 export type PanelProps = {
-  readonly id: number;
-  readonly numItems: number;
-  readonly updateStats: (name: string, stats: ComponentStats) => void;
+  id: number;
+  panelKey: string;
+  numItems: number;
+  updateStats: (name: string, stats: ComponentStats) => void;
+  rightMargin: number;
+  renderMode: string;
 };
 
 export class Panel extends React.PureComponent<PanelProps> {
@@ -29,10 +32,25 @@ export class Panel extends React.PureComponent<PanelProps> {
 
   render(): JSX.Element {
     Panel.stats.renderCount++;
+    return (this.props.renderMode === 'svg') ? this.renderSvg() : this.renderDiv();
+  }
+
+  private renderDiv(): JSX.Element {
     return (
-      <div className="Panel">
-        <div className="PanelHeader">{`Panel ${this.props.id + 1}`}</div>
+      <div className="Panel" style={{ marginRight: this.props.rightMargin + 1 }}>
+        <div className="PanelHeader">{`Panel ${this.props.id + 1}`}<br />{`Key ${this.props.panelKey}`}</div>
         {this.renderItems()}
+      </div>
+      );
+  }
+
+  private renderSvg(): JSX.Element {
+    return (
+      <div className="Panel" style={{ marginRight: this.props.rightMargin + 1 }}>
+        <div className="PanelHeader">{`Panel ${this.props.id + 1}`}<br />{`Key ${this.props.panelKey}`}</div>
+          <svg width="80" height={this.props.numItems * 4}>
+            {this.renderItems()}
+          </svg>
       </div>
       );
   }
@@ -41,7 +59,7 @@ export class Panel extends React.PureComponent<PanelProps> {
     let items: JSX.Element[] = [];
     for (let i = 0; i < this.props.numItems; i++) {
       const width = (Math.sin(((i - (this.props.id * 10)) * Math.PI * 1.5) / this.props.numItems) * 40) + 40;
-      items.push(<PanelItem key={i.toString()} width={width} updateStats={this.props.updateStats} />);
+      items.push(<PanelItem key={i.toString()} index={i} width={width} updateStats={this.props.updateStats} renderMode={this.props.renderMode} />);
     }
     return items;
   }
