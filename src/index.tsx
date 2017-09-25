@@ -3,9 +3,12 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
+import * as Perf from 'react-addons-perf';
 
 ReactDOM.render(
   <App />,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
+
+export const p = Perf;

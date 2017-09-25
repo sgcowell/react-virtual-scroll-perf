@@ -14,7 +14,7 @@ export type PanelContainerProps = {
 
 type PanelContainerState = {
   visiblePanelIndex: number;
-}
+};
 
 export class PanelContainer extends React.PureComponent<PanelContainerProps, PanelContainerState> {
 
@@ -54,7 +54,8 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps, Pan
       <div
         ref={(elem) => this.element = elem}
         className="PanelContainer"
-        onScroll={this.boundOnScroll}>
+        onScroll={this.boundOnScroll}
+      >
         <div className="ScrollContentBox" style={{ width: this.props.numPanels * this.panelWidth }}>
           {this.renderPanels()}
         </div>
@@ -103,7 +104,7 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps, Pan
     const rightMargin = (this.props.numPanels - endIndex) * this.panelWidth;
 
     if (startIndex > 0) {
-      panels.push(<div key="spacerleft" style={{ width: startIndex * this.panelWidth }} />)
+      panels.push(<div key="spacerleft" style={{ width: startIndex * this.panelWidth }} />);
     }
 
     for (let i = startIndex; i < endIndex; i++) {

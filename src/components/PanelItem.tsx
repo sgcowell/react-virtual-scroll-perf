@@ -42,24 +42,6 @@ export class PanelItem extends React.PureComponent<PanelItemProps> {
       );
   }
 
-/*
-  private renderDiv(): JSX.Element {
-    return (
-      <div className="PanelItem">
-        <div className="PanelItemBar" style={{ width: this.props.width }}>
-          <div className="PanelItemBarHighlight"  style={{ width: this.props.width / 2 }}>
-            <div className="PanelItemBarHighlight" style={{ width: this.props.width / 4, backgroundColor: "lightcoral" }}>
-              <div className="PanelItemBarHighlight" style={{ width: this.props.width / 8, backgroundColor: "lightgreen" }}>
-                <div className="PanelItemBarHighlight" style={{ width: this.props.width / 16, backgroundColor: "lightpurple" }}/>
-               </div>
-             </div>
-          </div>
-        </div>
-      </div>
-      );
-  }
-*/
-
   private renderSvg(): JSX.Element {
     return (
       <g>

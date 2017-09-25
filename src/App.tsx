@@ -80,9 +80,8 @@ class App extends React.Component<{}, AppState> {
     for (let s of scenarios) {
       if (this.state.scenario === s) {
         links.push(<span>{s}</span>);
-      }
-      else {
-        links.push(<a href='#' onClick={this.onScenarioSelected.bind(this, s)}>{s}</a>);
+      } else {
+        links.push(<a href="#" onClick={this.onScenarioSelected.bind(this, s)}>{s}</a>);
       }
     }
     return links;

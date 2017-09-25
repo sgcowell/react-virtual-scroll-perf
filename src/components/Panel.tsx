@@ -59,7 +59,14 @@ export class Panel extends React.PureComponent<PanelProps> {
     let items: JSX.Element[] = [];
     for (let i = 0; i < this.props.numItems; i++) {
       const width = (Math.sin(((i - (this.props.id * 10)) * Math.PI * 1.5) / this.props.numItems) * 40) + 40;
-      items.push(<PanelItem key={i.toString()} index={i} width={width} updateStats={this.props.updateStats} renderMode={this.props.renderMode} />);
+      items.push(
+        <PanelItem
+          key={i.toString()}
+          index={i}
+          width={width}
+          updateStats={this.props.updateStats}
+          renderMode={this.props.renderMode}
+        />);
     }
     return items;
   }
