@@ -2,6 +2,7 @@ import * as React from 'react';
 import './PanelContainer.css';
 import { ComponentStats } from './ComponentStatsPanel';
 import { Panel } from './Panel';
+import { renderingPerformanceTimer } from '../RenderingPerformanceTimer';
 
 export type PanelContainerProps = {
   numPanels: number;
@@ -18,11 +19,11 @@ type PanelContainerState = {
 
 export class PanelContainer extends React.PureComponent<PanelContainerProps, PanelContainerState> {
 
-  private static nextComponentId: number = 0;
-  private componentId: number = PanelContainer.nextComponentId++;
+  // private static nextComponentId: number = 0;
+  // private componentId: number = PanelContainer.nextComponentId++;
   private stats: ComponentStats = { mountCount: 0, updateCount: 0, renderCount: 0 };
   private element: HTMLDivElement | null = null;
-  private boundOnPaintComplete = this.onPaintComplete.bind(this);
+  // private boundOnPaintComplete = this.onPaintComplete.bind(this);
   private boundOnScroll = this.onScroll.bind(this);
   private readonly viewWidth = 800;
   private readonly panelWidth = 90 + 8 + 4 + 2; // width + padding + border + margin
@@ -33,9 +34,10 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps, Pan
     this.state = { visiblePanelIndex: 0 };
   }
 
+  @renderingPerformanceTimer('PanelContainer:mount')
   componentWillMount() {
-    performance.mark(this.getMarkName('mount', 'Start'));
-    setTimeout(this.boundOnPaintComplete, 0);
+    // performance.mark(this.getMarkName('mount', 'Start'));
+    // setTimeout(this.boundOnPaintComplete, 0);
   }
 
   componentDidMount() {
@@ -137,37 +139,12 @@ export class PanelContainer extends React.PureComponent<PanelContainerProps, Pan
     return panels;
   }
 
-  private getMarkName(eventType: string, eventName: string): string {
-    return `PanelContainer:${this.componentId}:${eventType}:${eventName}}`;
-  }
-
-  private onPaintComplete() {
-    const onScrollMark = this.getMarkName('onScroll', 'Start');
-    let marks = performance.getEntriesByName(onScrollMark, 'mark');
-    for (let mark of marks) {
-      performance.measure('PanelContainer:onScroll', mark.name);
-      const elapsed = performance.now() - mark.startTime;
-      this.props.recordTiming('PanelContainer:Scroll', elapsed);
-    }
-    performance.clearMarks(onScrollMark);
-    performance.clearMeasures('PanelContainer:onScroll');
-
-    const onMountMark = this.getMarkName('mount', 'Start');
-    marks = performance.getEntriesByName(onMountMark, 'mark');
-    for (let mark of marks) {
-      performance.measure('PanelContainer:mount', mark.name);
-      const elapsed = performance.now() - mark.startTime;
-      this.props.recordTiming('PanelContainer:Init', elapsed);
-    }
-    performance.clearMarks(onMountMark);
-    performance.clearMeasures('PanelContainer:mount');
-  }
-
+  @renderingPerformanceTimer('PanelContainer:onScroll')
   private onScroll() {
     if (this && this.element) {
       this.setState({ visiblePanelIndex: this.getFirstVisiblePanelIndex(this.element.scrollLeft) });
     }
-    performance.mark(this.getMarkName('onScroll', 'Start'));
-    setTimeout(this.boundOnPaintComplete, 0);
+    // performance.mark(this.getMarkName('onScroll', 'Start'));
+    // setTimeout(this.boundOnPaintComplete, 0);
   }
 }

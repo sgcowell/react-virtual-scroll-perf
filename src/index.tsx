@@ -4,6 +4,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 import * as Perf from 'react-addons-perf';
+import 'setimmediate';
 
 ReactDOM.render(
   <App />,
